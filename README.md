@@ -1,49 +1,36 @@
-<p align="left">
-  <img src="<img width="374" alt="image" src="https://github.com/user-attachments/assets/94028de7-4546-423e-bd03-4d4d9b8da6ab">
-" width="50%"/>
-<p>
+# Ocelot : 한국어 자기소개서 첨삭 및 평가 모델
+<p align="center" width="100%">
+<img src="Ocelot.png" alt="NLP Logo" style="width: 50%;">
+</p>
 
-# solar-kor-resume
+## Update Logs
+- 2024.05.27: [🤗Ocelot 모델 공개](cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0)
+이 모델은 Solar-Ko 모델의 10.8B Instruct 버전에 해당합니다.
+훈련은 A100-80GB * 8에서 수행되었습니다.
+---
 
-> Update @ 2024.05.27: First release of Ocelot-Ko-self-instruction-10.8B-v1.0
-<!-- Provide a quick summary of what the model is/does. -->
+<br>
+이번 Ocelot 모델은 웹 사이트의 합격 자기소개서를 기반으로 Alpaca 형식으로 미세조정하여 개발한 한국어 sLLM 입니다.
 
-This model card corresponds to the 10.8B Instruct version of the **Solar-Ko** model. 
-
-The train wad done on A100-80GB * 8
 
 **Resources and Technical Documentation**:
 * [Solar Model](https://huggingface.co/yanolja/EEVE-Korean-Instruct-10.8B-v1.0)
 
-
-**Citation**
-
-```bibtex
-@misc {cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0,
-	author       = { {frcp, nebchi, pepperonipizza97} },
-	title        = { solar-kor-resume},
-	year         = 2024,
-	url          = { https://huggingface.co/cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0 },
-	publisher    = { Hugging Face }
-}
-```
-
 **Model Developers**: frcp, nebchi, pepperonipizza97
 
 ## Model Information
-
-Resume Proofreading and evaluation of inputs and outputs.
+자기소개서를 입력하면, 모델이 이를 토대로 첨삭 및 평가를 진행합니다.
 
 ### Description
-It has been trained with a large amount of Korean tokens compared to other LLMs, enabling it to generate high-quality Korean text. 
+이 모델은 다른 대규모 언어 모델(LLM)과 비교하여 토크나이저 확장과 임베딩 초기화 그리고, embed_tokens와 lm_head를 warm-up 하여 높은 수준의 한국어 텍스트를 생성합니다.
 
 **Model Architecture** Solar is an auto-regressive language model that is scaled using the DUS method. 
 
 ### Inputs and outputs
-*   **Input:** Text string, such as a question, a prompt, or a document to be
-    Proofreaded.
-*   **Output:** Generated Korea text in response to the input, such
-    as an answer to a question, or a evaluation of a resume.
+*   **Input:** 질문, 프롬프트 또는 교정을 위한 문서와 같은 텍스트 문자열.
+*   **Output:** 입력에 대한 응답으로 생성된 한국어 텍스트. 예를 들어, 질문에 대한 답변이나 이력서 평가.
+
+### Train Parameter
 
 #### Running the model on a single / multi GPU
 ```python
@@ -104,7 +91,16 @@ print(outputs[0]["generated_text"][len(prompt):])
 | QWEN-14B          |  47.8   &nbsp;&nbsp;   66.4   |  45.3   &nbsp;&nbsp;   46.8   |  64.9   &nbsp;&nbsp;   68.9   |  33.4   &nbsp;&nbsp;   83.5  | 
 | Orion-14B-Chat    |  68.8   &nbsp;&nbsp;   73.2   |  47.0   &nbsp;&nbsp;   49.6   |  77.7   &nbsp;&nbsp;   79.4   |  81.6   &nbsp;&nbsp;   90.7  |                                                                               
 | **Ocelot-ko-10.8B**   |**72.5** &nbsp;&nbsp; **75.9** |  50.0   &nbsp;&nbsp;   51.4   |  75.8   &nbsp;&nbsp; **82.5** |**91.7** &nbsp;&nbsp; **93.8**|  
-
-### Software
-Training was done using Axoltol
 ---
+
+**Citation**
+
+```bibtex
+@misc {cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0,
+	author       = { {frcp, nebchi, pepperonipizza97} },
+	title        = { solar-kor-resume},
+	year         = 2024,
+	url          = { https://huggingface.co/cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0 },
+	publisher    = { Hugging Face }
+}
+```
