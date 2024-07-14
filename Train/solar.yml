@@ -1,1 +1,59 @@
+base_model: 사용할 solar model
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
 
+load_in_8bit: false
+load_in_4bit: true
+strict: false
+
+# huggingface repo
+datasets:
+  - path: 데이터셋 경로
+    type: oasst(axolotl/docs 참고)
+output_dir: ./results
+
+adapter: qlora
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_linear: true
+
+sequence_len: 4096
+sample_packing: true
+eval_sample_packing: false
+pad_to_sequence_len: true
+
+wandb_project:
+wandb_entity:
+wandb_watch:
+wandb_name:
+wandb_log_model:
+
+
+gradient_accumulation_steps: 4
+micro_batch_size: 8
+num_epochs: 4
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+learning_rate: 2e-5
+
+train_on_inputs: false
+group_by_length: false
+bf16: auto
+fp16:
+tf32: false
+
+gradient_checkpointing: true
+early_stopping_patience:
+resume_from_checkpoint:
+local_rank:
+logging_steps: 1
+xformers_attention:
+flash_attention: true
+
+debug:
+deepspeed: /home/ubuntu/moon/axolotl/deepspeed_configs/zero2.json
+weight_decay: 0.0
+fsdp:
+fsdp_config:
+special_tokens:
