@@ -8,8 +8,6 @@
 이 모델은 Solar-Ko 모델의 10.8B Instruct 버전에 해당합니다.
 훈련은 A100-80GB * 8에서 수행되었습니다.
 ---
-이번 Ocelot 모델은 웹 사이트의 합격 자기소개서를 기반으로 Alpaca 형식으로 미세조정하여 개발한 한국어 sLLM 입니다.
-
 
 **Resources and Technical Documentation**:
 * [Solar Model](https://huggingface.co/yanolja/EEVE-Korean-Instruct-10.8B-v1.0)
@@ -17,7 +15,7 @@
 **Model Developers**: frcp, nebchi, pepperonipizza97
 
 ## Model Information
-* 자기소개서를 입력하면, 모델이 이를 토대로 첨삭을 진행합니다.
+* 이번 Ocelot 모델은 웹 사이트의 합격 자기소개서를 기반으로 Alpaca 형식으로 미세조정하여 개발한 한국어 sLLM 입니다.
 
 ### Description
 * 이 모델은 대규모 언어 모델(LLM)에서 비영어권 언어인 한국어 성능을 높이기 위해 토크나이저 확장과 임베딩 초기화 그리고, embed_tokens와 lm_head를 warm-up 하여 높은 수준의 한국어 텍스트를 생성합니다.
@@ -27,6 +25,8 @@
 *   **Output:** 입력에 대한 응답으로 생성된 한국어 텍스트. 예를 들어, 질문에 대한 답변이나 이력서 평가.
 
 ### Train Parameter
+
+---
 
 #### Ocelot 모델 실행 예시 코드 / multi gpu
 ```python
