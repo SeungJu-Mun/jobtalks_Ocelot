@@ -17,10 +17,10 @@
 **Model Developers**: frcp, nebchi, pepperonipizza97
 
 ## Model Information
-자기소개서를 입력하면, 모델이 이를 토대로 첨삭 및 평가를 진행합니다.
+* 자기소개서를 입력하면, 모델이 이를 토대로 첨삭 및 평가를 진행합니다.
 
 ### Description
-이 모델은 다른 대규모 언어 모델(LLM)과 비교하여 토크나이저 확장과 임베딩 초기화 그리고, embed_tokens와 lm_head를 warm-up 하여 높은 수준의 한국어 텍스트를 생성합니다.
+* 이 모델은 다른 대규모 언어 모델(LLM)과 비교하여 토크나이저 확장과 임베딩 초기화 그리고, embed_tokens와 lm_head를 warm-up 하여 높은 수준의 한국어 텍스트를 생성합니다.
 
 ### Inputs and outputs
 *   **Input:** 질문, 프롬프트 또는 교정을 위한 문서와 같은 텍스트 문자열.
@@ -28,13 +28,14 @@
 
 ### Train Parameter
 
-#### Running the model on a single / multi GPU
+#### Ocelot 모델 실행 예시 코드 / multi gpu
 ```python
 # pip install accelerate, flash_attn, sentencepiece
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, TextStreamer
 
 tokenizer = AutoTokenizer.from_pretrained("cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0")
 model = AutoModelForCausalLM.from_pretrained("cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0", device_map="auto")
+streamer = TextStreamer(tokenizer) # 실시간 출력을 위해 설정
 
 pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=4096, streamer=streamer)
 
@@ -64,11 +65,9 @@ outputs = pipe(
     add_special_tokens=True
 )
 print(outputs[0]["generated_text"][len(prompt):])
-
 ```
 
 ### results
-
 ```python
 [첨삭]
 
@@ -77,7 +76,7 @@ print(outputs[0]["generated_text"][len(prompt):])
 고등학교와 대학에서는 이러한 성향을 개선하고자 다양한 노력을 기울였습니다. 예를 들어, 목표를 세분화하고 단계별로 접근하면서 성취감과 자신감을 키우기 위해 노력했습니다. 또한, 팀 프로젝트에서 역할을 분담하고 협력함으로써 개인의 한계보다 전체 성과를 우선시하는 법을 배웠습니다. 비록 아직 완벽함이라는 굴레로부터 완전히 자유로워지지는 못했지만, 이를 극복하고 성장할 수 있는 방법을 찾았다는 점에서 자부심을 느낍니다.
 ```
 
-### Evaluation Results - kO-lm-evaluation-harness
+### Ocelot 모델 평가 결과 - kO-lm-evaluation-harness
 | 모델 명칭          |**Average**<br>n=0&nbsp;n=5  |HellaSwag<br>n=0&nbsp;&nbsp;n=5 |COPA<br> n=0&nbsp;&nbsp;n=5 |BooIQ<br>n=0&nbsp;&nbsp;n=5 | 
 |------------------ |------------------------------|------------------------------|------------------------------|------------------------------|
 | KoGPT             |  58.2   &nbsp;&nbsp;   63.7   |  55.9   &nbsp;&nbsp;   58.3   |  73.5   &nbsp;&nbsp;   72.9   |  45.1   &nbsp;&nbsp;   59.8  | 
