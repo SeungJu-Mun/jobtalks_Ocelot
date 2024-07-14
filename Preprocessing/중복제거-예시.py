@@ -1,6 +1,7 @@
 import pandas as pd
 import hashlib
 
+# 중복 제거
 def simhash(text):
     # 전처리: 소문자 변환, 구두점 제거, 공백 제거
     text = re.sub(r'[\W_]+', '', str(text).lower())
@@ -19,12 +20,22 @@ def simhash(text):
 
     return int(simhash_value, 2)
 
-# 자기소개서 데이터셋 불러오기
-df = pd.read_csv('예시-자기소개서-데이터셋.csv')
+# 특수문자 제거 예시
+def remove_character(text):
+    # \r\n, \r, \n제거
+    text.str.replace(r'\r\n|\r|\n','')
 
-# SIMHASH 계산 및 중복 제거
-df['simhash'] = df['Answer'].apply(simhash)
+    # 한글 및 소제목[]을 제외한 나머지 문자 제거
+    text.str.replace(r'[^ㄱ-ㅎ ㅏ-ㅣ 가-힣 \[\]]','')
+
+    # 좋은점, 아쉬운점, 글자수 byte 제거하기
+    text.str.replace(r'(아쉬운점|좋은점|글자수)\s*\d*[자Byte,]*', '', regex=True)
+
+# 특수문자 제거 및 중복 데이터 제거
+df['특수문자를 제거 할 컬럼'] = df['특수문자를 제거 할 컬럼'].apply(remove_character)
+df['simhash'] = df['중복을 제거 할 컬럼'].apply(simhash)
 deduped_df = df.drop_duplicates(subset=['simhash'], keep='first')
+
 
 deduped_df = deduped_df[['질문','답변']]
 deduped_df.to_csv('저장할-데이터셋-이름.csv',index=False)
