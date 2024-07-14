@@ -27,23 +27,26 @@
 훈련은 A100 * 80GB * 8에서 진행을 하였고, Axolotl을 활용하였습니다.
 
 adapter: qlora
+
 lora_r: 16
+
 lora_alpha: 32
+
 lora_dropout: 0.05
+
 lora_target_linear: true
 
 gradient_accumulation_steps: 8
-micro_batch_size: 4
-num_epochs: 3
-optimizer: paged_adamw_8bit
-lr_scheduler: cosine
-learning_rate: 2e-5
 
-train_on_inputs: false
-group_by_length: false
-bf16: auto
-fp16:
-tf32: false
+micro_batch_size: 4
+
+num_epochs: 3
+
+optimizer: paged_adamw_8bit
+
+lr_scheduler: cosine
+
+learning_rate: 2e-5
 
 ---
 
