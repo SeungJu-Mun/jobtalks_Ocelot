@@ -1,15 +1,6 @@
----
-library_name: transformers
-tags:
-- pytorch
-license: apache-2.0
-language:
-- ko
-pipeline_tag: text-generation
----
-
 <p align="left">
-  <img src="https://huggingface.co/cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0/resolve/main/ocelot.webp" width="50%"/>
+  <img src="<img width="374" alt="image" src="https://github.com/user-attachments/assets/94028de7-4546-423e-bd03-4d4d9b8da6ab">
+" width="50%"/>
 <p>
 
 # solar-kor-resume
@@ -19,7 +10,7 @@ pipeline_tag: text-generation
 
 This model card corresponds to the 10.8B Instruct version of the **Solar-Ko** model. 
 
-The train wad done on A100-80GB
+The train wad done on A100-80GB * 8
 
 **Resources and Technical Documentation**:
 * [Solar Model](https://huggingface.co/yanolja/EEVE-Korean-Instruct-10.8B-v1.0)
@@ -47,8 +38,6 @@ Resume Proofreading and evaluation of inputs and outputs.
 It has been trained with a large amount of Korean tokens compared to other LLMs, enabling it to generate high-quality Korean text. 
 
 **Model Architecture** Solar is an auto-regressive language model that is scaled using the DUS method. 
-
-*You can find dataset list here: https://huggingface.co/datasets/cpm-ai/gpt-self-introduction-all
 
 ### Inputs and outputs
 *   **Input:** Text string, such as a question, a prompt, or a document to be
@@ -104,80 +93,6 @@ print(outputs[0]["generated_text"][len(prompt):])
 
 고등학교와 대학에서는 이러한 성향을 개선하고자 다양한 노력을 기울였습니다. 예를 들어, 목표를 세분화하고 단계별로 접근하면서 성취감과 자신감을 키우기 위해 노력했습니다. 또한, 팀 프로젝트에서 역할을 분담하고 협력함으로써 개인의 한계보다 전체 성과를 우선시하는 법을 배웠습니다. 비록 아직 완벽함이라는 굴레로부터 완전히 자유로워지지는 못했지만, 이를 극복하고 성장할 수 있는 방법을 찾았다는 점에서 자부심을 느낍니다.
 ```
-                                                                    
-### Evaluation Results - LogicKor
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Evaluation Results-LogicKor</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 18px;
-            text-align: left;
-        }
-        th, td {
-            padding: 12px 15px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:nth-of-type(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
-</head>
-<body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>글쓰기</th>
-                <th>이해</th>
-                <th>문법</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>HyperClovaX</td>
-                <td>8.50</td>
-                <td>9.50</td>
-                <td><b>8.50</b></td>
-            </tr>
-            <tr>
-                <td>solar-1-mini-chat</td>
-                <td>8.50</td>
-                <td>7.00</td>
-                <td>5.21</td>
-            </tr>         
-            <tr>
-                <td>allganize/Llama-3-Alpha-Ko-8B-Instruct</td>
-                <td>8.50</td>
-                <td>8.35</td>
-                <td>4.92</td>
-            </tr>
-            <tr>
-                <td>Synatra-kiqu-7B</td>
-                <td>4.42</td>
-                <td>5.71</td>
-                <td>4.50</td>
-            </tr>
-            <tr>
-                <td><b>Ocelot-ko-10.8B</b></td>
-                <td><b>8.57</b></td>
-                <td>7.00</td>
-                <td>6.57</td>
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html>
 
 ### Evaluation Results - Kobest
 | 모델 명칭          |**Average**<br>n=0&nbsp;n=5  |HellaSwag<br>n=0&nbsp;&nbsp;n=5 |COPA<br> n=0&nbsp;&nbsp;n=5 |BooIQ<br>n=0&nbsp;&nbsp;n=5 | 
@@ -191,5 +106,5 @@ print(outputs[0]["generated_text"][len(prompt):])
 | **Ocelot-ko-10.8B**   |**72.5** &nbsp;&nbsp; **75.9** |  50.0   &nbsp;&nbsp;   51.4   |  75.8   &nbsp;&nbsp; **82.5** |**91.7** &nbsp;&nbsp; **93.8**|  
 
 ### Software
-Training was done using QLoRA
+Training was done using Axoltol
 ---
