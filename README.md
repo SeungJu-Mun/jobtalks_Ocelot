@@ -14,7 +14,7 @@
 **Model Developers**: frcp, nebchi, pepperonipizza97
 
 ## Model Information
-* 이번 Ocelot 모델은 웹 사이트의 합격 자기소개서를 기반으로 Alpaca 형식으로 미세조정하여 개발한 한국어 sLLM 입니다.
+* 이번 Ocelot 모델은 한국어 LLM 모델에 합격 자기소개서를 기반으로 Alpaca 형식으로 미세조정(SFT)하여 첨삭에 특화된 한국어 sLLM 입니다.
 
 ### Description
 * 이 모델은 대규모 언어 모델(LLM)에서 비영어권 언어인 한국어 성능을 높이기 위해 토크나이저 확장과 임베딩 초기화 그리고, embed_tokens와 lm_head를 warm-up 하여 높은 수준의 한국어 텍스트를 생성합니다.
