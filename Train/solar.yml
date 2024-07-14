@@ -1,4 +1,4 @@
-base_model: 사용할 solar model
+base_model: yanolja/EEVE-Korean-Instruct-10.8B-v1.0
 model_type: AutoModelForCausalLM
 tokenizer_type: AutoTokenizer
 
