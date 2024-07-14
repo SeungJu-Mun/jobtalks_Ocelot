@@ -78,7 +78,7 @@ print(outputs[0]["generated_text"][len(prompt):])
 고등학교와 대학에서는 이러한 성향을 개선하고자 다양한 노력을 기울였습니다. 예를 들어, 목표를 세분화하고 단계별로 접근하면서 성취감과 자신감을 키우기 위해 노력했습니다. 또한, 팀 프로젝트에서 역할을 분담하고 협력함으로써 개인의 한계보다 전체 성과를 우선시하는 법을 배웠습니다. 비록 아직 완벽함이라는 굴레로부터 완전히 자유로워지지는 못했지만, 이를 극복하고 성장할 수 있는 방법을 찾았다는 점에서 자부심을 느낍니다.
 ```
 
-### Ocelot 모델 평가 결과 - kO-lm-evaluation-harness
+### Ocelot 모델 평가 결과 - [kO-lm-evaluation-harness](https://github.com/Beomi/ko-lm-evaluation-harness/activity)
 | 모델 명칭          |**Average**<br>n=0&nbsp;n=5  |HellaSwag<br>n=0&nbsp;&nbsp;n=5 |COPA<br> n=0&nbsp;&nbsp;n=5 |BooIQ<br>n=0&nbsp;&nbsp;n=5 | 
 |------------------ |------------------------------|------------------------------|------------------------------|------------------------------|
 | KoGPT             |  58.2   &nbsp;&nbsp;   63.7   |  55.9   &nbsp;&nbsp;   58.3   |  73.5   &nbsp;&nbsp;   72.9   |  45.1   &nbsp;&nbsp;   59.8  | 
