@@ -6,8 +6,6 @@
 ## Update Logs
 - 2024.05.27: [🤗Ocelot 모델 공개](cpm-ai/Ocelot-Ko-self-instruction-10.8B-v1.0)
 이 모델은 Solar-Ko 모델의 10.8B Instruct 버전에 해당합니다.
-
-훈련은 A100-80GB * 8에서 수행되었습니다.
 ---
 
 **Resources and Technical Documentation**:
@@ -26,6 +24,26 @@
 *   **Output:** 입력에 대한 응답으로 생성된 한국어 텍스트. 예를 들어, 질문에 대한 답변이나 이력서 평가.
 
 ### Train Parameter
+훈련은 A100 * 80GB * 8에서 진행을 하였고, Axolotl을 활용하였습니다.
+
+adapter: qlora
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_linear: true
+
+gradient_accumulation_steps: 8
+micro_batch_size: 4
+num_epochs: 3
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+learning_rate: 2e-5
+
+train_on_inputs: false
+group_by_length: false
+bf16: auto
+fp16:
+tf32: false
 
 ---
 
