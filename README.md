@@ -26,27 +26,7 @@
 ### Train Parameter
 훈련은 A100 * 80GB * 8에서 진행을 하였고, Axolotl을 활용하였습니다.
 
-adapter: qlora
-
-lora_r: 16
-
-lora_alpha: 32
-
-lora_dropout: 0.05
-
-lora_target_linear: true
-
-gradient_accumulation_steps: 8
-
-micro_batch_size: 4
-
-num_epochs: 3
-
-optimizer: paged_adamw_8bit
-
-lr_scheduler: cosine
-
-learning_rate: 2e-5
+(모델의 파라미터는 solar.yml 파일을 참고해주세요.)
 
 ---
 
