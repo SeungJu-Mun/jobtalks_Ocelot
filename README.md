@@ -11,7 +11,7 @@
 
 <br>
 이번 Ocelot 모델은 웹 사이트의 합격 자기소개서를 기반으로 Alpaca 형식으로 미세조정하여 개발한 한국어 sLLM 입니다.
-
+<br>
 
 **Resources and Technical Documentation**:
 * [Solar Model](https://huggingface.co/yanolja/EEVE-Korean-Instruct-10.8B-v1.0)
